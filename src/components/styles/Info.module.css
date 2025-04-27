@@ -1,0 +1,36 @@
+/* styles/Info.module.css */
+.cardsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
+}
+
+.card {
+  background-color: neon;
+  padding: 2rem;
+  width: 250px;
+  text-align: center;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: transparent;
+}
+
+.socials a {
+  margin: 0.5rem;
+  text-decoration: none;
+  color: blue;
+}
+
+.flexed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.memberImage {
+  width: 15rem;
+  height: 15rem;
+}

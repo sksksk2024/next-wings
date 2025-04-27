@@ -1,0 +1,26 @@
+/* styles/Header.module.css */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: black;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navItem {
+  color: neon;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.navItem:hover {
+  opacity: 0.7;
+}
