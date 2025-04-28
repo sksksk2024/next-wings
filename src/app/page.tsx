@@ -2,7 +2,10 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { loadStripe } from '@stripe/stripe-js';
+import { useToast } from '@/components/hooks/useToast';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from '@/components/styles/Products.module.css';
@@ -11,35 +14,192 @@ import a2 from '@/../public/a2.png';
 import p1 from '@/../public/p1.png';
 import p2 from '@/../public/p2.png';
 import Image from 'next/image';
+import {
+  buttonVariants,
+  cubeVariants,
+  piggyWiggle,
+} from '@/components/motionVariants/motionVariants';
 
 const Products = () => {
+  const { success, error, loading, dismiss } = useToast();
+
   const [activeImage, setActiveImage] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const nextImage = () => {
+    setDirection(1); // Going down
+    setActiveImage((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setDirection(-1); // Going up
+    setActiveImage((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   const images = [a1, a2, p1, p2];
 
-  const nextImage = () => setActiveImage((prev) => (prev + 1) % images.length);
-  const prevImage = () =>
-    setActiveImage((prev) => (prev - 1 + images.length) % images.length);
+  // STRIPE PAYMENT
+  const [showModal, setShowModal] = useState(false);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  const handlePayment = async () => {
+    try {
+      loading('Registering your order...');
+
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          productId: 'cube-1',
+          customerNote: 'Please deliver fast!',
+        }),
+      });
+
+      dismiss();
+
+      const data = await response.json();
+
+      if (response.ok) {
+        success(data.message);
+      } else {
+        throw new Error(data.error || 'Order failed');
+      }
+    } catch (err) {
+      console.error(err);
+      error('Something went wrong. Please try again.');
+    }
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === modalRef.current) {
+      setShowModal(false);
+    }
+  };
 
   return (
     <div>
       <Header />
-      <div className={styles.productContainer}>
-        <div className={styles.cube}>
-          <Image
-            src={images[activeImage]}
-            alt="Cube"
-            className={styles.cubeImage}
-          />
+      <main
+        className={`${styles.productContainer} flex justify-center items-center min-h-container-600 h-[87dvh] px-32P`}
+      >
+        <div
+          className={`${styles.cube} relative w-full w-full max-w-container-300 h-320H overflow-hidden`}
+        >
+          <AnimatePresence custom={direction} mode="wait">
+            <motion.div
+              key={activeImage}
+              custom={direction}
+              variants={cubeVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                y: { type: 'spring', stiffness: 300, damping: 30 },
+                opacity: { duration: 0.1 },
+              }}
+              className="absolute w-full h-full"
+            >
+              <Image
+                src={images[activeImage]}
+                alt="Cube"
+                fill
+                className={`${
+                  images[activeImage] !== a2 && 'object-cover'
+                } rounded-16BR`}
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <div className={styles.navigation}>
-          <button onClick={prevImage} className={styles.navButton}>
+
+        <div
+          className={`${styles.navigation} flex justify-between items-center gap-10 w-full max-w-container-300 mt-4`}
+        >
+          <motion.button
+            onClick={prevImage}
+            className={`${styles.navButton} w-1/2 bg-white text-black font-bold py-2 rounded`}
+            variants={buttonVariants}
+            initial="initial"
+            whileTap="tap"
+            animate="exit"
+          >
             Prev
-          </button>
-          <button onClick={nextImage} className={styles.navButton}>
+          </motion.button>
+          <motion.button
+            onClick={nextImage}
+            className={`${styles.navButton} w-1/2 bg-white text-black font-bold py-2 rounded`}
+            variants={buttonVariants}
+            initial="initial"
+            whileTap="tap"
+            animate="exit"
+          >
             Next
-          </button>
+          </motion.button>
         </div>
-      </div>
+
+        {/* BUY BUTTON HERE */}
+        <motion.button
+          aria-label="Open donation modal"
+          className="text-lg font-bold min-w-container-300 w-full max-w-container-300 mt-16M py-16P bg-blue-600 cursor-pointer"
+          variants={piggyWiggle}
+          initial="initial"
+          whileTap="tap"
+          whileHover="hover"
+          onClick={() => setShowModal(true)}
+        >
+          BUY
+        </motion.button>
+
+        <AnimatePresence>
+          {showModal && (
+            <motion.div
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              ref={modalRef}
+              onClick={handleBackdropClick}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="donation-title"
+            >
+              <motion.div
+                className="bg-white dark:bg-gray-900 rounded-2xl p-10 w-full max-w-lg shadow-lg mx-16M"
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 50, opacity: 0 }}
+              >
+                <h2
+                  id="donation-title"
+                  className="text-xl text-center text-textis font-bold mb-4"
+                >
+                  Help Keep Us Going <br /> 😁⚡
+                </h2>
+
+                <p className="text-center text-textis mb-6">
+                  Thank you for considering donating! <br /> Every bit helps.
+                </p>
+
+                <button
+                  onClick={handlePayment}
+                  className="text-white font-semibold w-full bg-green-500 py-3 px-6 rounded-lg cursor-pointer hover:bg-green-600"
+                >
+                  Register Order
+                </button>
+
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="text-gray-500 mt-4 w-full text-sm cursor-pointer hover:underline"
+                >
+                  Cancel
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </main>
       <Footer />
     </div>
   );

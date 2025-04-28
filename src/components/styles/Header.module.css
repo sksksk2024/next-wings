@@ -15,12 +15,8 @@
 }
 
 .navItem {
-  color: neon;
+  color: white;
   font-size: 1.5rem;
   text-decoration: none;
   transition: opacity 0.3s ease;
-}
-
-.navItem:hover {
-  opacity: 0.7;
 }

@@ -1,17 +1,35 @@
 // components/Header.js
+'use client';
+
 import Link from 'next/link';
 import styles from '@/components/styles/Header.module.css';
+import { motion } from 'framer-motion';
+import { navVariants } from './motionVariants/motionVariants';
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.nav}>
-        <Link href="/" className={styles.navItem}>
-          Products
-        </Link>
-        <Link href="/info" className={styles.navItem}>
-          Info
-        </Link>
+        <motion.button
+          variants={navVariants}
+          initial="hidden"
+          whileHover="hover"
+          animate="exit"
+        >
+          <Link href="/" className={`{styles.navItem} hover:text-blue-700`}>
+            Products
+          </Link>
+        </motion.button>
+        <motion.button
+          variants={navVariants}
+          initial="hidden"
+          whileHover="hover"
+          animate="exit"
+        >
+          <Link href="/info" className={`{styles.navItem} hover:text-blue-700`}>
+            Info
+          </Link>
+        </motion.button>
       </div>
     </header>
   );

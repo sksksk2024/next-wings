@@ -9,7 +9,10 @@ const Footer = () => {
         textAlign: 'center',
       }}
     >
-      <p>&copy; {new Date().getFullYear()} All rights reserved</p>
+      <p>
+        &copy; {new Date().getFullYear()} Calisthenics Wings | (+40)757-476-361
+        for orders and more info!
+      </p>
     </footer>
   );
 };

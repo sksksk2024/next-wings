@@ -1,21 +1,23 @@
 /* styles/Info.module.css */
+
 .cardsContainer {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .card {
-  background-color: neon;
-  padding: 2rem;
-  width: 250px;
+  background-color: gray; /*radient*/
   text-align: center;
-  border-radius: 10px;
   transition: background-color 0.3s ease;
 }
 
 .card:hover {
-  background-color: transparent;
+  background-color: black;
 }
 
 .socials a {
@@ -31,6 +33,6 @@
 }
 
 .memberImage {
-  width: 15rem;
-  height: 15rem;
+  width: 18rem;
+  height: 18rem;
 }
