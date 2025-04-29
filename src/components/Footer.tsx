@@ -10,7 +10,10 @@ const Footer = () => {
       }}
     >
       <p>
-        &copy; {new Date().getFullYear()} Calisthenics Wings | (+40)757-476-361
+        &copy; {new Date().getFullYear()} Calisthenics Wings |{' '}
+        <span className="select-text opacity-70 cursor-pointer">
+          (+40)757-476-361
+        </span>{' '}
         for orders and more info!
       </p>
     </footer>

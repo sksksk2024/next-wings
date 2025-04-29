@@ -16,7 +16,10 @@ const Header = () => {
           whileHover="hover"
           animate="exit"
         >
-          <Link href="/" className={`{styles.navItem} hover:text-blue-700`}>
+          <Link
+            href="/"
+            className={`{styles.navItem} text-lg hover:text-blue-700`}
+          >
             Products
           </Link>
         </motion.button>
@@ -26,7 +29,10 @@ const Header = () => {
           whileHover="hover"
           animate="exit"
         >
-          <Link href="/info" className={`{styles.navItem} hover:text-blue-700`}>
+          <Link
+            href="/info"
+            className={`{styles.navItem} text-lg hover:text-blue-700`}
+          >
             Info
           </Link>
         </motion.button>

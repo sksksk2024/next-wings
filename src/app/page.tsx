@@ -19,6 +19,7 @@ import {
   cubeVariants,
   piggyWiggle,
 } from '@/components/motionVariants/motionVariants';
+import PageWrapper from '@/components/utils/PageWrapper';
 
 const Products = () => {
   const { success, error, loading, dismiss } = useToast();
@@ -80,128 +81,131 @@ const Products = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <main
-        className={`${styles.productContainer} flex justify-center items-center min-h-container-600 h-[87dvh] px-32P`}
-      >
-        <div
-          className={`${styles.cube} relative w-full w-full max-w-container-300 h-320H overflow-hidden`}
+    <PageWrapper>
+      <div>
+        <Header />
+        <main
+          className={`${styles.productContainer} flex justify-center items-center min-h-container-600 h-[87dvh] px-32P`}
         >
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.div
-              key={activeImage}
-              custom={direction}
-              variants={cubeVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                y: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: 0.1 },
-              }}
-              className="absolute w-full h-full"
-            >
-              <Image
-                src={images[activeImage]}
-                alt="Cube"
-                fill
-                className={`${
-                  images[activeImage] !== a2 && 'object-cover'
-                } rounded-16BR`}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div
-          className={`${styles.navigation} flex justify-between items-center gap-10 w-full max-w-container-300 mt-4`}
-        >
-          <motion.button
-            onClick={prevImage}
-            className={`${styles.navButton} w-1/2 bg-white text-black font-bold py-2 rounded`}
-            variants={buttonVariants}
-            initial="initial"
-            whileTap="tap"
-            animate="exit"
+          <div
+            className={`${styles.cube} relative w-full w-full max-w-container-300 h-320H overflow-hidden`}
           >
-            Prev
-          </motion.button>
-          <motion.button
-            onClick={nextImage}
-            className={`${styles.navButton} w-1/2 bg-white text-black font-bold py-2 rounded`}
-            variants={buttonVariants}
-            initial="initial"
-            whileTap="tap"
-            animate="exit"
-          >
-            Next
-          </motion.button>
-        </div>
-
-        {/* BUY BUTTON HERE */}
-        <motion.button
-          aria-label="Open donation modal"
-          className="text-lg font-bold min-w-container-300 w-full max-w-container-300 mt-16M py-16P bg-blue-600 cursor-pointer"
-          variants={piggyWiggle}
-          initial="initial"
-          whileTap="tap"
-          whileHover="hover"
-          onClick={() => setShowModal(true)}
-        >
-          BUY
-        </motion.button>
-
-        <AnimatePresence>
-          {showModal && (
-            <motion.div
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              ref={modalRef}
-              onClick={handleBackdropClick}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="donation-title"
-            >
+            <AnimatePresence custom={direction} mode="wait">
               <motion.div
-                className="bg-white dark:bg-gray-900 rounded-2xl p-10 w-full max-w-lg shadow-lg mx-16M"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 50, opacity: 0 }}
+                key={activeImage}
+                custom={direction}
+                variants={cubeVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  y: { type: 'spring', stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.1 },
+                }}
+                className="absolute w-full h-full"
               >
-                <h2
-                  id="donation-title"
-                  className="text-xl text-center text-textis font-bold mb-4"
-                >
-                  Help Keep Us Going <br /> 😁⚡
-                </h2>
-
-                <p className="text-center text-textis mb-6">
-                  Thank you for considering donating! <br /> Every bit helps.
-                </p>
-
-                <button
-                  onClick={handlePayment}
-                  className="text-white font-semibold w-full bg-green-500 py-3 px-6 rounded-lg cursor-pointer hover:bg-green-600"
-                >
-                  Register Order
-                </button>
-
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="text-gray-500 mt-4 w-full text-sm cursor-pointer hover:underline"
-                >
-                  Cancel
-                </button>
+                <Image
+                  src={images[activeImage]}
+                  alt="Cube"
+                  fill
+                  className={`${
+                    images[activeImage] !== a2 && 'object-cover'
+                  } rounded-16BR`}
+                />
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </main>
-      <Footer />
-    </div>
+            </AnimatePresence>
+          </div>
+
+          <div
+            className={`${styles.navigation} flex justify-between items-center gap-10 w-full max-w-container-300 mt-4`}
+          >
+            <motion.button
+              onClick={prevImage}
+              className={`${styles.navButton} w-1/2 bg-white text-black font-bold py-2 rounded`}
+              variants={buttonVariants}
+              initial="initial"
+              whileTap="tap"
+              animate="exit"
+            >
+              Prev
+            </motion.button>
+            <motion.button
+              onClick={nextImage}
+              className={`${styles.navButton} w-1/2 bg-white text-black font-bold py-2 rounded`}
+              variants={buttonVariants}
+              initial="initial"
+              whileTap="tap"
+              animate="exit"
+            >
+              Next
+            </motion.button>
+          </div>
+
+          {/* BUY BUTTON HERE */}
+          <motion.button
+            aria-label="Open donation modal"
+            className="text-lg font-bold min-w-container-300 w-full max-w-container-300 mt-16M py-16P bg-blue-600 cursor-pointer"
+            variants={piggyWiggle}
+            initial="initial"
+            whileTap="tap"
+            whileHover="hover"
+            onClick={() => setShowModal(true)}
+          >
+            BUY
+          </motion.button>
+
+          <AnimatePresence>
+            {showModal && (
+              <motion.div
+                className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                ref={modalRef}
+                onClick={handleBackdropClick}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="donation-title"
+              >
+                <motion.div
+                  className="bg-white dark:bg-gray-900 rounded-2xl p-10 w-full max-w-lg shadow-lg mx-16M"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                >
+                  <h2
+                    id="donation-title"
+                    className="text-xl text-center text-textis font-bold mb-4"
+                  >
+                    Markup Your Order <br />
+                  </h2>
+
+                  <p className="text-center text-textis mb-6">
+                    We'll receive an email, which we will respond! <br /> As
+                    fast as we can.
+                  </p>
+
+                  <button
+                    onClick={handlePayment}
+                    className="text-white font-semibold w-full bg-green-500 py-3 px-6 rounded-lg cursor-pointer hover:bg-green-600"
+                  >
+                    Register Order
+                  </button>
+
+                  <button
+                    onClick={() => setShowModal(false)}
+                    className="text-gray-500 mt-4 w-full text-sm cursor-pointer hover:underline"
+                  >
+                    Cancel
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </div>
+    </PageWrapper>
   );
 };
 
