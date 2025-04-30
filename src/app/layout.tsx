@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Content, Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
+import ContentSite from '@/components/ContentSite';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,10 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" sizes="16x16" href="/wings.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ContentSite>{children}</ContentSite>
         <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
