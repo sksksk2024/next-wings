@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 import sgMail from '@sendgrid/mail';
-import { prisma } from '@/lib/prisma2';
+import { prisma } from '@/lib/prisma';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!); // Set SendGrid API Key
 
@@ -57,6 +57,10 @@ export async function POST(req: Request) {
     });
 
     const ownerEmail = 'cotaalexandru0403@gmail.com';
+
+    if (!user.email) {
+      return NextResponse.json({ error: 'Email not found' }, { status: 400 });
+    }
 
     // Send emails...
     await sgMail.send({
