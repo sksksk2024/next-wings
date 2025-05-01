@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 import sgMail from '@sendgrid/mail';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma2';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!); // Set SendGrid API Key
 

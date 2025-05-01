@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Content, Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import ContentSite from '@/components/ContentSite';
