@@ -90,6 +90,7 @@ const Products = () => {
     <PageWrapper>
       <div>
         <Header />
+        <h1 hidden>Products Page</h1>
         <main
           className={`${styles.productContainer} flex justify-center items-center min-h-container-600 h-[87dvh] px-32P`}
         >

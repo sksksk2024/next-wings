@@ -13,11 +13,11 @@ import Tiktok from '@/components/utils/Tiktok';
 
 const members = [
   {
-    image: Alex,
-    name: 'Alexandru Cota',
-    role: 'Web Developer',
-    passion: 'Thinking',
-    insta: 'https://www.instagram.com/alextvop2016/',
+    image: Serafim,
+    name: 'Serafim Socaciu',
+    role: 'CEO',
+    passion: 'Info',
+    insta: 'https://www.instagram.com/serafim.socaciu/',
   },
   {
     image: Mihai,
@@ -28,11 +28,11 @@ const members = [
     tiktok: 'https://www.tiktok.com/@mihai.ev',
   },
   {
-    image: Serafim,
-    name: 'Serafim Socaciu',
-    role: 'CEO',
-    passion: 'Info',
-    insta: 'https://www.instagram.com/serafim.socaciu/',
+    image: Alex,
+    name: 'Alexandru Cota',
+    role: 'Web Developer',
+    passion: 'Thinking',
+    insta: 'https://www.instagram.com/alextvop2016/',
   },
 ];
 
@@ -41,6 +41,7 @@ const Info = () => {
     <PageWrapper>
       <div>
         <Header />
+        <h1 hidden>Info Page</h1>
         <ul className={stylesInfo.cardsContainer}>
           {members.map((member, index) => (
             <li
@@ -49,19 +50,18 @@ const Info = () => {
             >
               <Image
                 src={member.image}
-                alt="Cube"
+                alt={`${member.name} member`}
                 className={`${stylesInfo.memberImage} rounded-t-16BR sm:rounded-tr-[0px] sm:rounded-l-16BR`}
               />
               <div
-                key={index}
                 className={`${stylesInfo.card} text-lg w-288W h-240H flex flex-col justify-center items-center rounded-b-16BR sm:h-288H sm:rounded-bl-[0px] sm:rounded-r-16BR`}
               >
-                <h3>{member.name}</h3>
+                <h2>{member.name}</h2>
                 <p>{member.role}</p>
                 <p>I like {member.passion}</p>
                 <div
                   className={`${stylesInfo.socials} m-16M
-                  ${member.tiktok && 'flex justify-center items-center gap-6'}
+                  ${member.tiktok ? 'flex justify-center items-center gap-6' : ''}
                   `}
                 >
                   <Link

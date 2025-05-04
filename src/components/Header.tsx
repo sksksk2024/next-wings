@@ -5,8 +5,11 @@ import Link from 'next/link';
 import styles from '@/components/styles/Header.module.css';
 import { motion } from 'framer-motion';
 import { navVariants } from './motionVariants/motionVariants';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+  const pathname = usePathname();
+
   return (
     <header className={styles.header}>
       <div className={styles.nav}>
@@ -18,7 +21,9 @@ const Header = () => {
         >
           <Link
             href="/"
-            className={`{styles.navItem} text-lg hover:text-blue-700`}
+            className={`{styles.navItem} text-lg ${
+              pathname === '/' ? 'text-blue-700' : 'hover:text-blue-700'
+            }`}
           >
             Products
           </Link>
@@ -31,7 +36,9 @@ const Header = () => {
         >
           <Link
             href="/info"
-            className={`{styles.navItem} text-lg hover:text-blue-700`}
+            className={`{styles.navItem} text-lg ${
+              pathname === '/info' ? 'text-blue-700' : 'hover:text-blue-700'
+            }`}
           >
             Info
           </Link>
