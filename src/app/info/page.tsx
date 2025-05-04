@@ -43,7 +43,7 @@ const Info = () => {
         <Header />
         <h1 hidden>Info Page</h1>
         <ul className={stylesInfo.cardsContainer}>
-          {members.map((member, index) => (
+          {members.map((member) => (
             <li
               className={`${stylesInfo.flexed} flex-col justify-center items-center sm:flex-row`}
               key={member.name}
