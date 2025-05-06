@@ -70,14 +70,31 @@ export async function POST(req: Request) {
       from: 'cota8091@gmail.com',
       to: ownerEmail,
       subject: `${user.email} Comanda Paralele`,
-      html: `<p>Cerere Primita!</p><p>Clientul a scris:</p><p>${message}</p>`,
+      html: `
+      <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+      <h2 style="color: #007BFF;">Cerere Primita!</h2>
+      <p><strong>Clientul:</strong> ${user.email}</p>
+      <p><strong>Mesajul:</strong></p>
+      <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #007BFF;">
+        ${message}
+      </blockquote>
+    </div>
+      `,
     });
 
     await sgMail.send({
       from: 'cota8091@gmail.com',
       to: user.email,
       subject: 'Comanda Ta de Paralele',
-      html: `<p>Iti multumim pentru cerere! Vom reveni la tine cat de curand!</p><p>Ai scris:</p><p>${message}</p>`,
+      html: `
+      <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+      <h2 style="color: #28a745;">Îți mulțumim pentru cerere!</h2>
+      <p>Vom reveni la tine cât de curând.</p>
+      <p><strong>Mesajul tău:</strong></p>
+      <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #28a745;">
+        ${message}
+      </blockquote>
+    </div>`,
     });
 
     return NextResponse.json({ message: 'Order sent successfully!' });
