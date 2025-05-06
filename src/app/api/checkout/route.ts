@@ -67,7 +67,10 @@ export async function POST(req: Request) {
 
     // Send emails...
     await sgMail.send({
-      from: 'cota8091@gmail.com',
+      from: {
+        email: 'cota8091@gmail.com',
+        name: 'wingsmag',
+      },
       to: ownerEmail,
       subject: `${user.email} Comanda Paralele`,
       html: `
@@ -83,7 +86,10 @@ export async function POST(req: Request) {
     });
 
     await sgMail.send({
-      from: 'cota8091@gmail.com',
+      from: {
+        email: 'cota8091@gmail.com',
+        name: 'wingsmag',
+      },
       to: user.email,
       subject: 'Comanda Ta de Paralele',
       html: `
