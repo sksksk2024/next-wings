@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   if (!session?.user?.email) {
     return NextResponse.json(
-      { error: 'Unauthorized. Please sign in.' },
+      { error: 'Neautorizat. Te sfatuiesc sa te loghezi.' },
       { status: 401 }
     );
   }
@@ -19,7 +19,10 @@ export async function POST(req: Request) {
   const { message } = await req.json();
 
   if (!message) {
-    return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'Messajul este obligatoriu.' },
+      { status: 400 }
+    );
   }
 
   try {
@@ -29,7 +32,7 @@ export async function POST(req: Request) {
     });
 
     if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      return NextResponse.json({ error: 'Persoana negasita' }, { status: 404 });
     }
 
     const lastOrder = await prisma.order.findFirst({
@@ -43,7 +46,7 @@ export async function POST(req: Request) {
         24 * 60 * 60 * 1000
     ) {
       return NextResponse.json(
-        { error: 'You can only place one order every 24 hours.' },
+        { error: 'Poti scrie un mesaj odata la 24 de ore.' },
         { status: 429 }
       );
     }
@@ -59,29 +62,29 @@ export async function POST(req: Request) {
     const ownerEmail = 'cotaalexandru0403@gmail.com';
 
     if (!user.email) {
-      return NextResponse.json({ error: 'Email not found' }, { status: 400 });
+      return NextResponse.json({ error: 'Email negasit' }, { status: 400 });
     }
 
     // Send emails...
     await sgMail.send({
       from: 'cota8091@gmail.com',
       to: ownerEmail,
-      subject: `${user.email} Orders Parallettes`,
-      html: `<p>Order received!</p><p>User wrote:</p><p>${message}</p>`,
+      subject: `${user.email} Comanda Paralele`,
+      html: `<p>Cerere Primita!</p><p>Clientul a scris:</p><p>${message}</p>`,
     });
 
     await sgMail.send({
       from: 'cota8091@gmail.com',
       to: user.email,
-      subject: 'Your Parallettes Order',
-      html: `<p>Thanks for your order!</p><p>You wrote:</p><p>${message}</p>`,
+      subject: 'Comanda Ta de Paralele',
+      html: `<p>Iti multumim pentru cerere!</p><p>Ai scris:</p><p>${message}</p>`,
     });
 
     return NextResponse.json({ message: 'Order sent successfully!' });
   } catch (err) {
     console.error(err);
     return NextResponse.json(
-      { error: 'Failed to process order' },
+      { error: 'Nu am putut sa-ti procesam comanda' },
       { status: 500 }
     );
   }

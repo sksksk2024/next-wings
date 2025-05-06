@@ -90,7 +90,7 @@ const Products = () => {
     <PageWrapper>
       <div>
         <Header />
-        <h1 hidden>Products Page</h1>
+        <h1 hidden>Pagina de Produse</h1>
         <main
           className={`${styles.productContainer} flex justify-center items-center min-h-container-600 h-[87dvh] px-32P`}
         >
@@ -134,7 +134,7 @@ const Products = () => {
               whileTap="tap"
               animate="exit"
             >
-              Prev
+              Inapoi
             </motion.button>
             <motion.button
               onClick={nextImage}
@@ -144,7 +144,7 @@ const Products = () => {
               whileTap="tap"
               animate="exit"
             >
-              Next
+              Inainte
             </motion.button>
           </div>
 
@@ -158,7 +158,7 @@ const Products = () => {
             whileHover="hover"
             onClick={() => setShowModal(true)}
           >
-            ORDER
+            COMANDA
           </motion.button>
 
           <AnimatePresence>
@@ -195,13 +195,13 @@ const Products = () => {
                         onClick={() => signIn('google')}
                         className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 cursor-pointer"
                       >
-                        Sign in with Google
+                        Logheza-te cu Google
                       </button>
                       <button
                         onClick={() => setShowModal(false)}
                         className="text-gray-500 text-sm cursor-pointer hover:underline"
                       >
-                        Cancel
+                        Iesi
                       </button>
                     </div>
                   ) : (
@@ -220,7 +220,7 @@ const Products = () => {
                         type="submit"
                         className="text-white font-semibold w-full bg-green-500 py-3 px-6 rounded-lg cursor-pointer hover:bg-green-600"
                       >
-                        Send Order Message
+                        Trimite Comanda
                       </button>
 
                       <button
@@ -228,7 +228,7 @@ const Products = () => {
                         onClick={() => signOut()}
                         className="text-center text-sm text-red-600 hover:underline cursor-pointer"
                       >
-                        Sign out
+                        Iesi din Cont
                       </button>
 
                       <button
@@ -236,7 +236,7 @@ const Products = () => {
                         onClick={() => setShowModal(false)}
                         className="text-gray-500 text-sm cursor-pointer hover:underline"
                       >
-                        Cancel
+                        Iesi
                       </button>
                     </form>
                   )}

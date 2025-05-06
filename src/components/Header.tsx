@@ -25,7 +25,7 @@ const Header = () => {
               pathname === '/' ? 'text-blue-700' : 'hover:text-blue-700'
             }`}
           >
-            Products
+            Produse
           </Link>
         </motion.button>
         <motion.button

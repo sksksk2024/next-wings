@@ -14,7 +14,7 @@ const Footer = () => {
         <span className="select-text opacity-70 cursor-pointer">
           (+40)757-476-361
         </span>{' '}
-        for orders and more info!
+        pentru comenzi si mai multe informatii!
       </p>
     </footer>
   );

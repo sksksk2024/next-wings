@@ -16,14 +16,14 @@ const members = [
     image: Serafim,
     name: 'Serafim Socaciu',
     role: 'CEO',
-    passion: 'Info',
+    passion: 'informatica',
     insta: 'https://www.instagram.com/serafim.socaciu/',
   },
   {
     image: Mihai,
     name: 'Mihai Alexa',
     role: 'Content Creator',
-    passion: 'Chess',
+    passion: 'sahul',
     insta: 'https://www.instagram.com/mihai.ev/',
     tiktok: 'https://www.tiktok.com/@mihai.ev',
   },
@@ -31,7 +31,7 @@ const members = [
     image: Alex,
     name: 'Alexandru Cota',
     role: 'Web Developer',
-    passion: 'Thinking',
+    passion: 'sa gandesc',
     insta: 'https://www.instagram.com/alextvop2016/',
   },
 ];
@@ -41,7 +41,7 @@ const Info = () => {
     <PageWrapper>
       <div>
         <Header />
-        <h1 hidden>Info Page</h1>
+        <h1 hidden>Pagina de Info</h1>
         <ul className={stylesInfo.cardsContainer}>
           {members.map((member) => (
             <li
@@ -58,7 +58,7 @@ const Info = () => {
               >
                 <h2>{member.name}</h2>
                 <p>{member.role}</p>
-                <p>I like {member.passion}</p>
+                <p>Pasiunea mea este {member.passion}</p>
                 <div
                   className={`${stylesInfo.socials} m-16M
                   ${member.tiktok ? 'flex justify-center items-center gap-6' : ''}
