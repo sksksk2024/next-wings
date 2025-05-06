@@ -77,7 +77,7 @@ export async function POST(req: Request) {
       from: 'cota8091@gmail.com',
       to: user.email,
       subject: 'Comanda Ta de Paralele',
-      html: `<p>Iti multumim pentru cerere!</p><p>Ai scris:</p><p>${message}</p>`,
+      html: `<p>Iti multumim pentru cerere! Vom reveni la tine cat de curand!</p><p>Ai scris:</p><p>${message}</p>`,
     });
 
     return NextResponse.json({ message: 'Order sent successfully!' });

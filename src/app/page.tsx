@@ -212,7 +212,7 @@ const Products = () => {
                       <textarea
                         name="message"
                         required
-                        placeholder="Write the model or idea for the parallettes..."
+                        placeholder="Scrie modelul de paralele pe care-l vrei(totodata pune marimea, aspectul, lungimea barii, livrarea)..."
                         className="text-black w-full p-3 rounded-lg border border-gray-300"
                       />
 
