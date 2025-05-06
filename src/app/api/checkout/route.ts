@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     if (
       lastOrder &&
       new Date().getTime() - new Date(lastOrder.createdAt).getTime() <
-        24 * 60 * 60 * 1000
+        -24 * 60 * 60 * 1000
     ) {
       return NextResponse.json(
         { error: 'Poti scrie un mesaj odata la 24 de ore.' },
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
 
     // Send emails...
     await sgMail.send({
-      from: 'cota8091@gmail.com',
+      from: 'wingsmag24@gmail.com',
       to: ownerEmail,
       subject: `${user.email} Comanda Paralele`,
       html: `
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
     });
 
     await sgMail.send({
-      from: 'cota8091@gmail.com',
+      from: 'wingsmag24@gmail.com',
       to: user.email,
       subject: 'Comanda Ta de Paralele',
       html: `
