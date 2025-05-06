@@ -58,7 +58,9 @@ const Info = () => {
               >
                 <h2>{member.name}</h2>
                 <p>{member.role}</p>
-                <p>Pasiunea mea este {member.passion}</p>
+                <p className="max-w-container-200 leading-none">
+                  Pasiunea mea este {member.passion}!
+                </p>
                 <div
                   className={`${stylesInfo.socials} m-16M
                   ${member.tiktok ? 'flex justify-center items-center gap-6' : ''}

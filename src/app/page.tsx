@@ -185,8 +185,8 @@ const Products = () => {
                     className="text-black text-xl text-center font-bold mb-4"
                   >
                     {session?.user
-                      ? 'Describe Your Parallettes'
-                      : 'Sign in to Order'}
+                      ? 'Descrie-ti cum vrei sa-ti arate paralelele.'
+                      : 'Intra in cont inainte sa scrii!'}
                   </h2>
 
                   {!session?.user ? (
