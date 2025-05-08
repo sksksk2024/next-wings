@@ -21,6 +21,13 @@ model User {
   sessions      Session[]
 }
 
+model Message {
+  id        String @id @default(cuid())
+  email     String 
+  content   String
+  createdAt DateTime @default(now())
+}
+
 model Order {
   id        String   @id @default(cuid())
   message   String

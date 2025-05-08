@@ -93,7 +93,7 @@ const Products = () => {
         <main
           className={`${styles.productContainer} flex justify-center items-center min-h-container-600 h-[87dvh] px-32P`}
         >
-          <h1 className="text-xl text-center text-white font-bold uppercase mb-32M ">
+          <h1 className="text-xl text-center text-white font-bold uppercase mb-32M">
             Personalizeaza-ti setul tau de paralele acum.
           </h1>
           <div
@@ -160,7 +160,7 @@ const Products = () => {
             whileHover="hover"
             onClick={() => setShowModal(true)}
           >
-            COMANDA
+            {!session?.user ? 'INREGISTREAZA-TE' : 'COMANDA'}
           </motion.button>
 
           <AnimatePresence>

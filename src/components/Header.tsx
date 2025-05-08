@@ -6,9 +6,11 @@ import styles from '@/components/styles/Header.module.css';
 import { motion } from 'framer-motion';
 import { navVariants } from './motionVariants/motionVariants';
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 const Header = () => {
   const pathname = usePathname();
+  const { data: session } = useSession() || {};
 
   return (
     <header className={styles.header}>
@@ -26,6 +28,48 @@ const Header = () => {
             }`}
           >
             Produse
+          </Link>
+        </motion.button>
+        {/* {!session?.user ? (
+          <button>
+            <Link
+              href="/mesaje"
+              className={`{styles.navItem} text-gray-500 text-lg cursor-not-allowed
+              }`}
+            >
+              Scrie-i owner-ul
+            </Link>
+          </button>
+        ) : (
+          <motion.button
+            variants={navVariants}
+            initial="hidden"
+            whileHover="hover"
+            animate="exit"
+          >
+            <Link
+              href="/mesaje"
+              className={`{styles.navItem} text-lg ${
+                pathname === '/mesaje' ? 'text-blue-700' : 'hover:text-blue-700'
+              }`}
+            >
+              Scrie-i owner-ul
+            </Link>
+          </motion.button>
+        )} */}
+        <motion.button
+          variants={navVariants}
+          initial="hidden"
+          whileHover="hover"
+          animate="exit"
+        >
+          <Link
+            href="/mesaje"
+            className={`{styles.navItem} text-lg ${
+              pathname === '/mesaje' ? 'text-blue-700' : 'hover:text-blue-700'
+            }`}
+          >
+            Scrie-i owner-ul
           </Link>
         </motion.button>
         <motion.button
