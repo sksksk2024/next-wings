@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import sgMail from '@sendgrid/mail';
+import { Chat } from '@prisma/client';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!); // Set SendGrid API Key
 
@@ -17,7 +18,7 @@ export async function POST(req: NextRequest) {
     }
 
     // SAVE TO DB
-    const chat = await prisma.chat.create({
+    const chat: Chat = await prisma.chat.create({
       data: { email, content },
     });
 
