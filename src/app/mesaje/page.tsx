@@ -27,7 +27,7 @@ const Mesaje = () => {
     }
 
     try {
-      const res = await fetch('/api/messages', {
+      const res = await fetch('/api/chats', {
         method: 'POST',
         body: JSON.stringify({ email, content }),
         headers: { 'Content-Type': 'application/json' },

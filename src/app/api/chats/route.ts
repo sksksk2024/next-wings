@@ -1,4 +1,4 @@
-// app/api/messages/route.ts
+// app/api/chats/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import sgMail from '@sendgrid/mail';
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     // SAVE TO DB
-    const message = await prisma.message.create({
+    const chat = await prisma.chat.create({
       data: { email, content },
     });
 
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       <p><strong>Clientul:</strong> ${email}</p>
       <p><strong>Mesajul:</strong></p>
       <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #007BFF;">
-        ${message}
+        ${chat}
       </blockquote>
     </div>
       `,
@@ -54,13 +54,13 @@ export async function POST(req: NextRequest) {
       <p><strong>Ownerul:</strong> ${process.env.ADMIN_EMAIL!}</p>
       <p><strong>Mesajul:</strong></p>
       <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #007BFF;">
-        ${message}
+        ${chat}
       </blockquote>
     </div>
       `,
     });
 
-    return NextResponse.json({ success: true, message });
+    return NextResponse.json({ success: true, chat });
   } catch (error) {
     console.error('Error sending message:', error);
     return NextResponse.json(

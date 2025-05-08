@@ -16,13 +16,13 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  message      Message[]
+  chats      Chat[]
   orders        Order[]
   accounts      Account[]
   sessions      Session[]
 }
 
-model Message {
+model Chat {
   id        String @id @default(cuid())
   email     String 
   content   String
