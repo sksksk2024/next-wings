@@ -6,11 +6,9 @@ import styles from '@/components/styles/Header.module.css';
 import { motion } from 'framer-motion';
 import { navVariants } from './motionVariants/motionVariants';
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 
 const Header = () => {
   const pathname = usePathname();
-  const { data: session } = useSession() || {};
 
   return (
     <header className={styles.header}>

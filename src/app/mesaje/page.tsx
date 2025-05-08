@@ -42,7 +42,7 @@ const Mesaje = () => {
         setStatus(data.error || 'Something went wrong');
       }
     } catch (error) {
-      setStatus('Failed to send message');
+      setStatus(`Failed to send message: ${error}`);
     }
   };
 
