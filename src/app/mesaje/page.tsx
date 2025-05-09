@@ -14,9 +14,6 @@ const Mesaje = () => {
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('');
 
-  let errorMessage = '';
-  let successMessage = '';
-
   const sendMessage = async () => {
     if (!email || !content) {
       setStatus('Fill in all fields!');
@@ -41,10 +38,8 @@ const Mesaje = () => {
         setStatus('Mesajul s-a trimis cu succes!');
         setEmail('');
         setContent('');
-        successMessage = 'text-green-400';
       } else {
         setStatus(data.error || 'Ceva nu a mers bine!');
-        errorMessage = 'text-red-400';
       }
     } catch (error) {
       setStatus(`Failed to send message: ${error}`);
@@ -56,7 +51,7 @@ const Mesaje = () => {
       <div>
         <Header />
         <main
-          className={`${styles.productContainer} flex justify-center items-center gap-2 min-h-container-600 h-[87dvh] px-32P`}
+          className={`${styles.productContainer} flex justify-center items-center gap-2 min-w-container-300 w-full max-w-container-600 min-h-container-600 h-[87dvh] px-32P`}
         >
           <h1 className="text-xl text-center text-white font-bold uppercase mb-32M ">
             Trimite-i mesaj owner-ului 💬
@@ -89,7 +84,7 @@ const Mesaje = () => {
           {status && (
             <p
               className={`text-sm mt-8M
-            ${successMessage ? 'text-green-400' : 'text-red-400'}
+            ${status === 'Mesajul s-a trimis cu succes!' ? 'text-green-400' : 'text-red-400'}
             `}
             >
               {status}
