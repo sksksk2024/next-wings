@@ -64,7 +64,7 @@ const Mesaje = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <textarea
-            className="w-full p-2 rounded bg-gray-800 text-white min-w-container-300 w-full max-w-container-600 border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
+            className="w-full p-2 rounded bg-gray-800 text-white min-w-container-300 w-full max-w-container-600 max-h-container-400 border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
             placeholder="Mesajul tau"
             rows={5}
             value={content}
