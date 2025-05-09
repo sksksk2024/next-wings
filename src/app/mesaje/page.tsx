@@ -51,20 +51,20 @@ const Mesaje = () => {
       <div>
         <Header />
         <main
-          className={`${styles.productContainer} flex justify-center items-center gap-2 min-w-container-300 w-full max-w-container-600 min-h-container-600 h-[87dvh] mx-auto px-32P`}
+          className={`${styles.productContainer} flex justify-center items-center gap-2 min-h-container-600 h-[87dvh] mx-auto px-32P`}
         >
-          <h1 className="text-xl text-center text-white font-bold uppercase mb-32M ">
-            Trimite-i mesaj owner-ului 💬
+          <h1 className="text-xl text-center text-white font-bold uppercase mb-32M">
+            Trimite-i mesaj owner-ului
           </h1>
           <input
-            className="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
+            className="w-full p-2 rounded bg-gray-800 text-white min-w-container-300 w-full max-w-container-600 border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
             type="email"
             placeholder="Introduce-ti emailul"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <textarea
-            className="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
+            className="w-full p-2 rounded bg-gray-800 text-white min-w-container-300 w-full max-w-container-600 border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
             placeholder="Mesajul tau"
             rows={5}
             value={content}
