@@ -14,6 +14,9 @@ const Mesaje = () => {
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('');
 
+  let errorMessage = '';
+  let successMessage = '';
+
   const sendMessage = async () => {
     if (!email || !content) {
       setStatus('Fill in all fields!');
@@ -35,11 +38,13 @@ const Mesaje = () => {
 
       const data = await res.json();
       if (res.ok) {
-        setStatus('Message sent successfully!');
+        setStatus('Mesajul s-a trimis cu succes!');
         setEmail('');
         setContent('');
+        successMessage = 'text-green-400';
       } else {
-        setStatus(data.error || 'Something went wrong');
+        setStatus(data.error || 'Ceva nu a mers bine!');
+        errorMessage = 'text-red-400';
       }
     } catch (error) {
       setStatus(`Failed to send message: ${error}`);
@@ -54,7 +59,7 @@ const Mesaje = () => {
           className={`${styles.productContainer} flex justify-center items-center gap-2 min-h-container-600 h-[87dvh] px-32P`}
         >
           <h1 className="text-xl text-center text-white font-bold uppercase mb-32M ">
-            Send a message to the site owner 💬
+            Trimite-i mesaj owner-ului 💬
           </h1>
           <input
             className="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"
@@ -81,7 +86,15 @@ const Mesaje = () => {
           >
             TRIMITE
           </motion.button>
-          {status && <p className="text-sm text-red-400 mt-8M">{status}</p>}
+          {status && (
+            <p
+              className={`text-sm mt-8M
+            ${successMessage ? 'text-green-400' : 'text-red-400'}
+            `}
+            >
+              {status}
+            </p>
+          )}
         </main>
         <Footer />
       </div>

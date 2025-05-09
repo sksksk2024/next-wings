@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       <p><strong>Clientul:</strong> ${email}</p>
       <p><strong>Mesajul:</strong></p>
       <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #007BFF;">
-        ${chat}
+        ${chat.content}
       </blockquote>
     </div>
       `,
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
       <p><strong>Ownerul:</strong> ${process.env.ADMIN_EMAIL!}</p>
       <p><strong>Mesajul:</strong></p>
       <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #007BFF;">
-        ${chat}
+        ${chat.content}
       </blockquote>
     </div>
       `,
