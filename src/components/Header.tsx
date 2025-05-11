@@ -67,7 +67,7 @@ const Header = () => {
               pathname === '/mesaje' ? 'text-blue-700' : 'hover:text-blue-700'
             }`}
           >
-            Scrie-i owner-ul
+            Scrie-i owner-ului
           </Link>
         </motion.button>
         <motion.button
