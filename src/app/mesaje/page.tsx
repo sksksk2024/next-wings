@@ -54,7 +54,7 @@ const Mesaje = () => {
           className={`${styles.productContainer} flex justify-center items-center gap-2 min-h-container-600 h-[87dvh] mx-auto px-32P`}
         >
           <h1 className="text-xl text-center text-white font-bold uppercase mb-32M">
-            Trimite-i mesaj owner-ului
+            Trimite mesaj echipei!
           </h1>
           <input
             className="w-full p-2 rounded bg-gray-800 text-white min-w-container-300 w-full max-w-container-600 border border-gray-600 appearance-none focus:outline-2 focus:outline-offset-2 focus:border-blue-600 focus:outline-solid focus:shadow-outline"

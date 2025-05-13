@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       },
     });
 
-    const ownerEmail = 'cotaalexandru0403@gmail.com';
+    const teamEmail = 'cotaalexandru0403@gmail.com';
 
     if (!user.email) {
       return NextResponse.json({ error: 'Email negasit' }, { status: 400 });
@@ -71,7 +71,7 @@ export async function POST(req: Request) {
         email: 'cota8091@gmail.com',
         name: 'wingsmag',
       },
-      to: ownerEmail,
+      to: teamEmail,
       subject: `${user.email} Comanda Paralele`,
       html: `
       <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">

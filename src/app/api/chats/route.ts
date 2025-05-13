@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
       html: `
       <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
       <h2 style="color: #007BFF;">Cerere Primita!</h2>
-      <p><strong>Ownerul:</strong> ${process.env.ADMIN_EMAIL!}</p>
+      <p><strong>Coleg Wings:</strong> ${process.env.ADMIN_EMAIL!}</p>
       <p><strong>Mesajul:</strong></p>
       <blockquote style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #007BFF;">
         ${chat.content}
