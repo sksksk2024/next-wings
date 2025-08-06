@@ -2,9 +2,9 @@
 
 'use client';
 
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from '@/components/hooks/useToast';
 import Header from '../components/Header';
@@ -43,17 +43,17 @@ const Products = () => {
 
   // STRIPE PAYMENT
   const [showModal, setShowModal] = useState(false);
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  // const modalRef = useRef<HTMLDivElement | null>(null);
 
   // const { data: session } = useSession() || {};
 
   // EXTRACTING GOOGLE EMAIL FROM USER
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === modalRef.current) {
-      setShowModal(false);
-    }
-  };
+  // const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   if (e.target === modalRef.current) {
+  //     setShowModal(false);
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -183,8 +183,8 @@ const Products = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                ref={modalRef}
-                onClick={handleBackdropClick}
+                // ref={modalRef}
+                // onClick={handleBackdropClick}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="donation-title"

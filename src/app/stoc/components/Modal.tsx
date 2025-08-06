@@ -10,20 +10,21 @@ import { useToast } from '@/components/hooks/useToast';
 import { OrderSchema } from '@/lib/schemas';
 
 type ModalProps = {
-    latime: number
-    inaltime: number
-    distantaSol: number
-    grosimeBara: number
-    latimeSuport: number
-    lungimeBara: number
+    // latime: number
+    // inaltime: number
+    // distantaSol: number
+    // grosimeBara: number
+    // latimeSuport: number
+    // lungimeBara: number
     setShowModal: (value: boolean) => void
 }
 
 const Modal = ({
-    latime, inaltime, distantaSol, grosimeBara, latimeSuport, lungimeBara, setShowModal
+    // latime, inaltime, distantaSol, grosimeBara, latimeSuport, lungimeBara, 
+    setShowModal
 }: ModalProps) => {
   const { success, error, loading, dismiss } = useToast();
-    const images1 = [a1, a2, p1, p2];
+    // const images1 = [a1, a2, p1, p2];
     const modalRef = useRef<HTMLDivElement | null>(null);
       
         const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
