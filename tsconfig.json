@@ -23,6 +23,6 @@
     },
     "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/mesaje/page.tsx.bak", "src/app/api/chats/route copy.ts.a"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/mesaje/page.tsx.bak", "src/app/api/chats/route copy.ts.a", "src/app/api/auth/[...nextauth]/route.ts.sasa"],
   "exclude": ["node_modules"]
 }
