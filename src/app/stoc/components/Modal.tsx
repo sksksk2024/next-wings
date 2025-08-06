@@ -1,10 +1,6 @@
 import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useState } from 'react';
-import a1 from '@/../public/b_pair_side.jpg';
-import a2 from '@/../public/a2.png';
-import p1 from '@/../public/p1.png';
-import p2 from '@/../public/p2.png';
 import Intrebare from './Intrebare';
 import { useToast } from '@/components/hooks/useToast';
 import { OrderSchema } from '@/lib/schemas';
