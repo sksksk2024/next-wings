@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+// import React, { useRef } from 'react'
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,7 +18,7 @@ import Footer from '@/components/Footer';
 import Modal from './components/Modal';
 import CardParalele from './components/CardParalele';
 
-const page = () => {
+const Page = () => {
   const [showModal, setShowModal] = useState(false);
 
   // setTimeout(() => {
@@ -93,4 +93,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
