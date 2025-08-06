@@ -21,7 +21,6 @@ import {
   piggyWiggle,
 } from '@/components/motionVariants/motionVariants';
 import PageWrapper from '@/components/utils/PageWrapper';
-import Link from 'next/link';
 
 const Products = () => {
   const { success, error, loading, dismiss } = useToast();
@@ -45,7 +44,7 @@ const Products = () => {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
 
-  // const { data: session } = useSession() || {};
+  const { data: session } = useSession() || {};
 
   // EXTRACTING GOOGLE EMAIL FROM USER
 
@@ -152,7 +151,7 @@ const Products = () => {
           </div>
 
           {/* BUY BUTTON HERE */}
-          {/* <motion.button
+          <motion.button
             aria-label="Open donation modal"
             className="text-lg font-bold min-w-container-300 w-full max-w-container-300 mt-16M py-16P bg-blue-600 cursor-pointer"
             variants={piggyWiggle}
@@ -161,19 +160,7 @@ const Products = () => {
             whileHover="hover"
             onClick={() => setShowModal(true)}
           >
-            COMANDA
-          </motion.button> */}
-          <motion.button
-            aria-label="Stoc paralele si tipurile lor"
-            className="text-lg font-bold min-w-container-300 w-full max-w-container-300 mt-16M py-16P bg-blue-600 cursor-pointer"
-            variants={piggyWiggle}
-            initial="initial"
-            whileTap="tap"
-            whileHover="hover"
-          >
-            <Link href="/stoc">
-            STOCUL NOSTRU
-            </Link>
+            {!session?.user ? 'INREGISTREAZA-TE' : 'COMANDA'}
           </motion.button>
 
           <AnimatePresence>
@@ -199,9 +186,27 @@ const Products = () => {
                     id="donation-title"
                     className="text-black text-xl text-center font-bold mb-4"
                   >
-                    Comanda ta finala de paralele
+                    {session?.user
+                      ? 'Descrie-ti cum vrei sa-ti arate paralelele.'
+                      : 'Intra in cont inainte sa scrii!'}
                   </h2>
-                 
+
+                  {!session?.user ? (
+                    <div className="flex flex-col gap-4 items-center">
+                      <button
+                        onClick={() => signIn('google')}
+                        className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 cursor-pointer"
+                      >
+                        Logheza-te cu Google
+                      </button>
+                      <button
+                        onClick={() => setShowModal(false)}
+                        className="text-gray-500 text-sm cursor-pointer hover:underline"
+                      >
+                        Iesi
+                      </button>
+                    </div>
+                  ) : (
                     <form
                       onSubmit={handleSubmit}
                       className="flex flex-col justify-center items-center space-y-4"
@@ -236,6 +241,7 @@ const Products = () => {
                         Iesi
                       </button>
                     </form>
+                  )}
                 </motion.div>
               </motion.div>
             )}

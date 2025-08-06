@@ -368,6 +368,7 @@ module.exports = {
         '288M': '18rem',
         '304M': '19rem',
         '320M': '20rem',
+        '400M': '25rem',
       },
       inset: {
         '16negI': '-1rem',
