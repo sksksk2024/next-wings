@@ -9,9 +9,6 @@ import all from '@/../public/ALL_COVER.jpg';
 import str from '@/../public/s_triangle_pair_side.jpg';
 import s from '@/../public/s_pair_side.jpg';
 import m from '@/../public/m_side_pair.jpg';
-import a2 from '@/../public/a2.png';
-import p1 from '@/../public/p1.png';
-import p2 from '@/../public/p2.png';
 import {
   piggyWiggle,
 } from '@/components/motionVariants/motionVariants';
@@ -86,7 +83,9 @@ const page = () => {
       </div>
     <AnimatePresence>
                 {showModal && (
-                  <Modal latime={10} inaltime={10} distantaSol={5} grosimeBara={38} latimeSuport={46} lungimeBara={20} setShowModal={setShowModal} />
+                  <Modal
+                  // latime={10} inaltime={10} distantaSol={5} grosimeBara={38} latimeSuport={46} lungimeBara={20} 
+                  setShowModal={setShowModal} />
                 )}
               </AnimatePresence>
     <Footer />
