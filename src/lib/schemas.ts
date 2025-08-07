@@ -11,4 +11,9 @@ export const OrderSchema = z.object({
   cantitate: z.string().min(1),
 });
 
+export const EmailSchema = z.object({
+  email: z.string().email('Email invalid'),
+});
+
+export type EmailMessageInput = z.infer<typeof EmailSchema>;
 export type EmailInput = z.infer<typeof OrderSchema>;

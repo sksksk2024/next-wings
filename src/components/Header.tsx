@@ -62,12 +62,12 @@ const Header = () => {
           animate="exit"
         >
           <Link
-            href="/mesaje"
+            href="/stoc"
             className={`{styles.navItem} text-lg ${
-              pathname === '/mesaje' ? 'text-blue-700' : 'hover:text-blue-700'
+              pathname === '/stoc' ? 'text-blue-700' : 'hover:text-blue-700'
             }`}
           >
-            Contact
+            Stocul nostru
           </Link>
         </motion.button>
         <motion.button
